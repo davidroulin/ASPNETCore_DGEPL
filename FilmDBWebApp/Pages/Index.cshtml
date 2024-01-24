@@ -12,6 +12,21 @@
 	<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<span>
+	@* @Model.TitreTest *@
+
+	@* @Model.tousLesFilms_CoteServeur // marche pas *@
+
+	@foreach(var titre in Model.tousLesFilms_CoteServeur)
+	{
+		<div>
+			@titre
+		</div>
+	}
+
+</span>
+
+
 @* <span>
 	@ViewData["Truc"]
 </span>
