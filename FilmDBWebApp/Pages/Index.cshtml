@@ -17,12 +17,12 @@
 
 	@* @Model.tousLesFilms_CoteServeur // marche pas *@
 
-	@foreach(var titre in Model.tousLesFilms_CoteServeur)
+	@* @foreach(var titre in Model.tousLesFilms_CoteServeur)
 	{
 		<div>
 			@titre
 		</div>
-	}
+	} *@
 
 </span>
 
@@ -55,27 +55,29 @@
 	  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
+			@foreach (Film film in Model.tousLesFilms_CoteServeur)
+			{
+				<div class="col">
+					<div class="card shadow-sm">
+					<img class="bd-placeholder-img card-img-top" src="https://upload.wikimedia.org/wikipedia/en/f/f7/28_Days_Poster.jpg"/>
+					<div class="card-body">
+						<p class="card-text">
 
-		<div class="col">
-		  <div class="card shadow-sm">
-			<img class="bd-placeholder-img card-img-top" src="https://upload.wikimedia.org/wikipedia/en/f/f7/28_Days_Poster.jpg"/>
-			  @* <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> *@
-			<div class="card-body">
-			  <p class="card-text">
-				  <h3>28 Days</h3>
-				  28 Days is a 2000 American comedy-drama film directed by Betty Thomas and written by Susannah Grant. Sandra Bullock stars as Gwen Cummings, a newspaper columnist obliged to enter rehabilitation for alcoholism. The film costars Viggo Mortensen, Dominic West, Elizabeth Perkins, Azura Skye, Steve Buscemi, and Diane Ladd.
-			  </p>
+							<h3>@film.Title</h3>
 
-				  <div class="d-flex justify-content-between align-items-center">
-				<div class="btn-group">
-				  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-				  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+								@film.Summary
+						</p>
+						<div class="d-flex justify-content-between align-items-center">
+						<div class="btn-group">
+							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+							<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+						</div>
+							<small class="text-muted">@film.Year</small>
+						</div>
+					</div>
+					</div>
 				</div>
-				<small class="text-muted">2000</small>
-			  </div>
-			</div>
-		  </div>
-		</div>
+			}
 
 
 
