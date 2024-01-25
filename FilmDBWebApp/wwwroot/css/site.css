@@ -22,3 +22,10 @@ body {
     color: chartreuse;
     font-weight: bold;
 }*/
+
+
+img.film-poster {
+    height: 240px;
+    object-fit: cover;
+    object-position: top;
+}
