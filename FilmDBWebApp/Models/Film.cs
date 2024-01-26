@@ -10,6 +10,8 @@ namespace FilmDBWebApp.Models
 		// lire par ex. ce tres bon article : https://www.bytehide.com/blog/const-vs-readonly-in-c-explanation-in-3-minutes
 		public const int max_length_summary = 150;
 
+		public int ID { get; set; }
+
 		public string Title { get; set; }
 
 		public string Summary { get; set; } // "extract"
