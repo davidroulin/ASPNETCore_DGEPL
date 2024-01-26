@@ -28,40 +28,49 @@ using System.Text.Json.Serialization;
 /// 
 /// </summary>
 
-public class Film
+namespace FilmDBWebApp.Models
 {
-	
-	public const int mac_length_summary = 150;
 
-	public string Title { get; set; }
+	public class Film
+	{
 
-	[JsonPropertyName("extract")]
-	public string Summary { get; set; } // "extract"
+		// const ou readonly ?
+		// lire par ex. ce tres bon article : https://www.bytehide.com/blog/const-vs-readonly-in-c-explanation-in-3-minutes
+		public const int max_length_summary = 150;
 
-	public string TruncatedSummary {
-		get {
+		public string Title { get; set; }
 
-			//if (Summary == null)
-			//{
-			//	return "(no resume)";
-			//} else
-			//{
-			//	return Summary.Substring(0, 150);
-			//}
+		[JsonPropertyName("extract")]
+		public string Summary { get; set; } // "extract"
 
-			return ( Summary?.Substring(0, Math.Min(mac_length_summary, Summary.Length)) ?? "(no resume)" )
-				+ ( Summary?.Length > mac_length_summary ? "..." : ""  ?? "" );
+		public string TruncatedSummary
+		{
+			get
+			{
+
+				//if (Summary == null)
+				//{
+				//	return "(no resume)";
+				//} else
+				//{
+				//	return Summary.Substring(0, 150);
+				//}
+
+				return (Summary?.Substring(0, Math.Min(max_length_summary, Summary.Length)) ?? "(no resume)")
+					+ (Summary?.Length > max_length_summary ? "..." : "" ?? "");
+			}
 		}
+
+		public int Year { get; set; }
+
+		[JsonPropertyName("thumbnail")]
+		public string Poster { get; set; } // "thumbnail"
+
+		[JsonPropertyName("cast")]
+		public List<Actor> Actors { get; set; }
+
+		public List<string> Genres { get; set; }
+
 	}
-
-	public int Year { get; set; }
-
-	[JsonPropertyName("thumbnail")]
-	public string Poster{ get; set; } // "thumbnail"
-
-	[JsonPropertyName("cast")]
-	public List<string> Actors { get; set; }
-
-	public List<string> Genres { get; set; }
 
 }

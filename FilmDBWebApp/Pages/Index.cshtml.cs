@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.IO;
 using System.Text.Json;
 using Microsoft.AspNetCore.Hosting;
+using FilmDBWebApp.Models;
 
 namespace FilmDBWebApp.Pages
 {
