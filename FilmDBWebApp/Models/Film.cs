@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FilmDBWebApp.Models.Utils;
+using System;
 using System.Text.Json.Serialization;
 
 /// <summary>
@@ -66,6 +67,7 @@ namespace FilmDBWebApp.Models
 		[JsonPropertyName("thumbnail")]
 		public string Poster { get; set; } // "thumbnail"
 
+		[JsonConverter(typeof(JsonToActorsConverter))]
 		[JsonPropertyName("cast")]
 		public List<Actor> Actors { get; set; }
 
