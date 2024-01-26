@@ -10,19 +10,47 @@ namespace FilmDBWebApp.Models.Utils
 
 		public override List<Actor>? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
+			List<Actor> actors = new List<Actor>();
+
 			while (reader.Read())
 			{
 				if (reader.TokenType == JsonTokenType.EndArray)
 				{
 					break;
+				} else
+				{
+					//string current = reader.GetString();
+
+					//Actor actor1 = new Actor();
+					//actor1.FullName = current;
+
+					//Actor actor2 = new Actor { FullName = current };
+
+					//actors.Add(actor);
+
+
+					//actors.Add(new Actor { FullName = reader.GetString() });
+
+
+					//string? current = reader.GetString();
+					//Actor actor = new Actor { FullName = current ?? "" };
+					//actors.Add(actor);
+
+					string? current = reader.GetString();
+					Actor actor = new Actor { FullName = current ?? "" };
+					actors.Add(actor);
+
 				}
 			}
 
-			Actor actor = new Actor();
-			actor.FullName = "Benoit Poelvoorde";
-			List<Actor> actors = new List<Actor>();
-			actors.Add(actor);
 			return actors;
+
+
+			//Actor actor = new Actor();
+			//actor.FullName = "Benoit Poelvoorde";
+			//List<Actor> actors = new List<Actor>();
+			//actors.Add(actor);
+			//return actors;
 		}
 
 		public override void Write(Utf8JsonWriter writer, List<Actor> value, JsonSerializerOptions options)
