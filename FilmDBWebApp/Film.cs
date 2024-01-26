@@ -30,17 +30,38 @@ using System.Text.Json.Serialization;
 
 public class Film
 {
+	
+	public const int mac_length_summary = 150;
 
 	public string Title { get; set; }
 
 	[JsonPropertyName("extract")]
 	public string Summary { get; set; } // "extract"
 
+	public string TruncatedSummary {
+		get {
+
+			//if (Summary == null)
+			//{
+			//	return "(no resume)";
+			//} else
+			//{
+			//	return Summary.Substring(0, 150);
+			//}
+
+			return ( Summary?.Substring(0, Math.Min(mac_length_summary, Summary.Length)) ?? "(no resume)" )
+				+ ( Summary?.Length > mac_length_summary ? "..." : ""  ?? "" );
+		}
+	}
+
 	public int Year { get; set; }
 
 	[JsonPropertyName("thumbnail")]
 	public string Poster{ get; set; } // "thumbnail"
 
+	[JsonPropertyName("cast")]
+	public List<string> Actors { get; set; }
 
+	public List<string> Genres { get; set; }
 
 }

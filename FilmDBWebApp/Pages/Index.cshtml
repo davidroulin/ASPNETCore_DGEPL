@@ -59,22 +59,34 @@
 			{
 				<div class="col">
 					<div class="card shadow-sm">
-					<img class="bd-placeholder-img card-img-top film-poster" src="@film.Poster"/>
-					<div class="card-body">
-						<p class="card-text">
-
+						<img class="bd-placeholder-img card-img-top film-poster" src="@film.Poster"/>
+						<div class="card-body">
 							<h3>@film.Title</h3>
-
-								@film.Summary
-						</p>
-						<div class="d-flex justify-content-between align-items-center">
-						<div class="btn-group">
-							<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-							<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+							<span>
+								<small class="text-muted">@film.Year</small>
+							</span>
+							<span class="card-text m-2">
+								@film.TruncatedSummary								
+							</span>
+							<div>
+								<div class="btn-group-sm m-2" role="group">
+									@foreach(string genre in film.Genres)
+									{
+										<button type="button" class="btn btn-outline-secondary">
+											@genre
+										</button>
+									}
+								</div>
+									<div class="list-group m-2">
+									@foreach(string actor in film.Actors)
+									{
+										<a href="#" class="list-group-item list-group-item-action">
+											@actor
+										</a>
+									}
+								</div>
+							</div>
 						</div>
-							<small class="text-muted">@film.Year</small>
-						</div>
-					</div>
 					</div>
 				</div>
 			}
